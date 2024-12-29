@@ -18,13 +18,29 @@
                     <button class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Import</button>
                     <button class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Export</button>
                     <form class="mx-2 text-base text-center text-gray-900 dark:text-gray-100" action="search" method="get">
-                        <input class="px-3 py-2 bg-gray-600 rounded-md " type="text" placeholder="Search with name" name="search"/>
+                        <input class="px-3 py-2 bg-gray-600 rounded-md " type="text" placeholder="Search with make name" name="search"/>
                     </form>
                 </div>
             </div>
 
-            
-            <?php use App\Models\Product; $products = Product::get(); ?>
+            <?php
+            use App\Models\Product;
+
+            // Check the previous URL
+            $previousUrl = url()->previous();
+
+            // Check if the previous URL contains '/search'
+            if (str_contains($previousUrl, '/search')) {
+                if (isset($products) && $products->isNotEmpty()) {
+                    $products = $products; // Use existing $products
+                } else {
+                    $products = Product::get(); // Fetch all products if $products is empty
+                }
+            } else {
+                $products = Product::get(); // Default to fetching all products if not from /search
+            }
+            ?>
+
             @include('tables', ['products'=>$products]);
 
             <!-- Modal -->

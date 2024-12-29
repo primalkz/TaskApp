@@ -55,4 +55,9 @@ class ProductController extends Controller
             return "update failed";
         }
     }
+
+    public function search(Request $req) {
+        $productFilter = Product::where('make', 'like', "%$req->search%")->get();
+        return view('app', ['products'=>$productFilter]);
+    }
 }
