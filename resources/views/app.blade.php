@@ -10,43 +10,48 @@
         <div>
             <!-- He who is contented is rich. - Laozi -->
             <div class='flex flex-row items-center justify-center mt-4 justify-around'>
-                <h1 class="items-center justify-center text-2xl font-bold text-center text-green-900 dark:text-green-400">Product Listing</h1>
-                <div class='flex flex-row items-center'>
-                    <button id="openModal" class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Add data</button>
+                <div class="">
+                    <h1 class="uppercase items-center justify-center text-xl font-bold text-center text-green-900 dark:text-green-400">Product Listing</h1>
+                </div>
+                <div class='flex flex-row items-center flex-shrink'>
+                    <button id="openModal" class="px-3 py-2 bg-green-400/30 mx-2 rounded-md text-base font-bold text-center text-green-900 dark:text-green-400">Add</button>
                     <button class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Import</button>
                     <button class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Export</button>
+                    <form class="mx-2 text-base text-center text-gray-900 dark:text-gray-100" action="search" method="get">
+                        <input class="px-3 py-2 bg-gray-600 rounded-md " type="text" placeholder="Search with name" name="search"/>
+                    </form>
                 </div>
             </div>
 
-            <table>
-
-            </table>
+            
+            <?php use App\Models\Product; $products = Product::get(); ?>
+            @include('tables', ['products'=>$products]);
 
             <!-- Modal -->
             <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden">
-                <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white dark:bg-gray-800">
+                <div class="relative top-20 mx-auto p-5 border border-white/30 w-96 shadow-lg rounded-xl bg-white dark:bg-gray-800">
                     <div class="mt-3 text-center">
                         <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">Add Product</h3>
                         <div class="mt-2 px-7 py-3">
                             <form action="/adddata" method="post" class="space-y-4">
                                 @csrf
                                 <div>
-                                    <label for="product" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Product Make/Model</label>
-                                    <input type="text" id="product" name="product" placeholder="Enter the product Make/Model" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                                    <label for="product" class="text-left block text-sm font-medium text-gray-700 dark:text-gray-300">Product Make/Model</label>
+                                    <input type="text" id="product" name="productmake" placeholder="Enter the product Make/Model" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-200" required>
                                 </div>
                                 <div>
-                                    <label for="productdesc" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Product Description</label>
-                                    <input type="text" id="productdesc" name="productdesc" placeholder="Enter the product Description" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                                    <label for="productdesc" class="text-left block text-sm font-medium text-gray-700 dark:text-gray-300">Product Description</label>
+                                    <input type="text" id="productdesc" name="productdesc" placeholder="Enter the product Description" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-200" required>
                                 </div>
                                 <div>
-                                    <label for="productqt" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Product Quantity</label>
-                                    <input type="number" id="productqt" name="productqt" placeholder="Enter product quantity" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                                    <label for="productqt" class="text-left block text-sm font-medium text-gray-700 dark:text-gray-300">Product Quantity</label>
+                                    <input type="number" id="productqt" name="productqt" placeholder="Enter product quantity" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-200" required>
                                 </div>
                                 <div>
-                                    <label for="productprice" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Product Price</label>
-                                    <input type="number" id="productprice" name="productprice" placeholder="Enter product price" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
+                                    <label for="productprice" class="text-left block text-sm font-medium text-gray-700 dark:text-gray-300">Product Price</label>
+                                    <input type="number" id="productprice" name="productprice" placeholder="Enter product price" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-gray-200" required>
                                 </div>
-                                <div class="items-center px-4 py-3">
+                                <div class="items-center px-0 py-3">
                                     <button id="closeModal" type="button" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300">
                                         Close
                                     </button>
@@ -59,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <script>
             // Get the modal
