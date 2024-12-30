@@ -30,3 +30,9 @@ Route::get('/delete/{id}', [ProductController::class, 'delete']);
 Route::get('/edit/{id}', [ProductController::class, 'edit']);
 Route::put('/edit-product/{id}', [ProductController::class, 'editProduct']);
 Route::get('search', [ProductController::class, 'search']);
+Route::get('/export-products', [ProductController::class, 'exportProducts']);
+
+Route::post('/import-products', [ProductController::class, 'importProducts']);
+Route::get('/upload', function () {
+    return view('upload');
+});

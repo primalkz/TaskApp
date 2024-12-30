@@ -15,8 +15,8 @@
                 </div>
                 <div class='flex flex-row items-center flex-shrink'>
                     <button id="openModal" class="px-3 py-2 bg-green-400/30 mx-2 rounded-md text-base font-bold text-center text-green-900 dark:text-green-400">Add</button>
-                    <button class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Import</button>
-                    <button class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Export</button>
+                    <a href="{{'/upload'}}"><button class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Import</button></a>
+                    <a href="{{'/export-products'}}"><button class="px-3 py-2 bg-gray-600 mx-2 rounded-md text-base font-bold text-center text-gray-900 dark:text-gray-100">Export</button></a>
                     <form class="mx-2 text-base text-center text-gray-900 dark:text-gray-100" action="search" method="get">
                         <input class="px-3 py-2 bg-gray-600 rounded-md " type="text" placeholder="Search with make name" name="search"/>
                     </form>
