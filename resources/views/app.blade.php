@@ -20,6 +20,7 @@
                     <form class="mx-2 text-base text-center text-gray-900 dark:text-gray-100" action="search" method="get">
                         <input class="px-3 py-2 bg-gray-600 rounded-md " type="text" placeholder="Search with make name" name="search"/>
                     </form>
+                    <a href="{{'/logout'}}"><button class="px-3 py-2 bg-red-400/30 mx-2 rounded-md text-base font-bold text-center text-red-900 dark:text-red-400">Log out</button></a>
                 </div>
             </div>
 
